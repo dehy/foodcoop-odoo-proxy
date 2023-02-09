@@ -1,4 +1,4 @@
-FROM ubuntu:21.10
+FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Paris
@@ -8,7 +8,7 @@ RUN apt update && apt-get install -y --no-install-recommends python3 python3-pip
     rm -rf /var/cache/apt
 
 ADD requirements.txt /tmp/requirements.txt
-RUN pip3 install --no-cache-dir -r /tmp/requirements.txt
+RUN pip3 install --upgrade --no-cache-dir -r /tmp/requirements.txt
 
 ADD --chown=app:app src/ /app
 WORKDIR /app
